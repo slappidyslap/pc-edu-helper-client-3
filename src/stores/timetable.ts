@@ -1,12 +1,15 @@
 import { defineStore } from 'pinia'
-import {Group, TimetableSchema} from '@/ts/timetable'
+import TimetableSchema from '@/ts/TimetableSchema'
+import GroupModel from '@/ts/GroupModel'
 
-export const useTimetableStore = defineStore('timetable', () => {
+const useTimetableStore = defineStore('timetable', () => {
     const data: TimetableSchema = TimetableSchema.empty()
 
-    function addGroup(group: Group) {
+    function addGroup(group: GroupModel) {
         data.groups.push(group)
     }
 
     return { data, addGroup }
 })
+
+export default useTimetableStore

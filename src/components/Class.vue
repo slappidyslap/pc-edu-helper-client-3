@@ -1,10 +1,11 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
-import type {Class} from "@/ts/timetable";
+import ClassModel from "@/ts/ClassModel";
 import {ref} from "vue";
 import Lesson from "@/components/Lesson.vue";
 
 const props = defineProps<{
-  clazz: Class,
+  clazz: ClassModel,
   id: number
 }>()
 
@@ -31,4 +32,4 @@ const isHasSecondLesson = ref(false)
 
 <style scoped>
 
-</style>
+</style>@/ts/TimetableSchema
