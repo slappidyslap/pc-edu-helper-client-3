@@ -5,6 +5,7 @@ export default class LessonModel {
     private _teacher: string
     private _audience: string
     private _isTeacherValid: boolean
+    private _teacherFieldErrorMessage: string
 
     private constructor() {
         this._subject = ""
@@ -12,6 +13,11 @@ export default class LessonModel {
         this._teacher = ""
         this._audience = ""
         this._isTeacherValid = true
+        this._teacherFieldErrorMessage = ""
+    }
+
+    set teacherFieldErrorMessage(value: string) {
+        this._teacherFieldErrorMessage = value
     }
 
     set subject(value: string) {
@@ -28,6 +34,10 @@ export default class LessonModel {
     
     set audience(value: string) {
         this._audience = value
+    }
+
+    get teacherFieldErrorMessage(): string {
+        return this._teacherFieldErrorMessage
     }
 
     get subject(): string {

@@ -53,9 +53,15 @@ const useTimetableStore = defineStore('timetable', () => {
 
             for (const {groupNames, lessons} of classesMap.values()) {
                 if (lessons.length == 1) {
-                    lessons.forEach(l => l.isTeacherValid = true)
+                    lessons.forEach(l => {
+                        l.isTeacherValid = true
+                        l.teacherFieldErrorMessage = ''
+                    })
                 } else {
-                    lessons.forEach(l => l.isTeacherValid = false)
+                    lessons.forEach(l => {
+                        l.isTeacherValid = false
+                        l.teacherFieldErrorMessage = [...groupNames].join(', ')
+                    })
                 }
             }
         }
