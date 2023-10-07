@@ -3,11 +3,34 @@
 import useTimetableStore from "@/stores/timetable";
 import GroupModel from "@/ts/GroupModel";
 import Class from "@/components/Class.vue";
+import type { ClassMetaData } from "@/ts/types";
 
 const timetableStore = useTimetableStore();
 timetableStore.addGroup(GroupModel.withName("ПКС 3-21"))
 timetableStore.addGroup(GroupModel.withName("ПКС 2-21"))
 timetableStore.addGroup(GroupModel.withName("КС 2-21"))
+
+function onChangeSubject(data: ClassMetaData, dayOfWeek: string, groupName: string) {
+  console.log('пук')
+}
+
+function onChangeTarget(data: ClassMetaData, dayOfWeek: string, groupName: string) {
+  console.log('пук')
+}
+
+function onChangeTeacher(data: ClassMetaData, dayOfWeek: string, groupName: string) {
+  timetableStore.insertTeacherRecord({
+    value: data.value,
+    lessonId: data.lessonId,
+    classId: data.classId,
+    dayOfWeek,
+    groupName
+  })
+}
+
+function onChangeAudience(data: ClassMetaData, dayOfWeek: string, groupName: string) {
+  console.log('пук')
+}
 
 </script>
 
@@ -26,7 +49,13 @@ timetableStore.addGroup(GroupModel.withName("КС 2-21"))
               </div>
               <div class="flex-col w-11/12">
                 <template v-for="(clazz, id) in day.classes" :key="id">
-                  <Class :id="id" :clazz="clazz"/>
+                  <Class
+                    :id="id"
+                    :clazz="clazz"
+                    @change-subject="data => onChangeSubject(data, day.dayOfWeek, group.name)"
+                    @change-target="data => onChangeTarget(data, day.dayOfWeek, group.name)"
+                    @change-teacher="data => onChangeTeacher(data, day.dayOfWeek, group.name)"
+                    @change-audience="data => onChangeAudience(data, day.dayOfWeek, group.name)"/>
                 </template>
               </div>
             </div>

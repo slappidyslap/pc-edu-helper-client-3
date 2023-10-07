@@ -4,12 +4,14 @@ export default class LessonModel {
     private _target: string
     private _teacher: string
     private _audience: string
+    private _isTeacherValid: boolean
 
     private constructor() {
         this._subject = ""
         this._target = ""
         this._teacher = ""
         this._audience = ""
+        this._isTeacherValid = true
     }
 
     set subject(value: string) {
@@ -42,6 +44,13 @@ export default class LessonModel {
 
     get audience(): string {
         return this._audience;
+    }
+
+    get isTeacherValid(): boolean {
+        return this._isTeacherValid
+    }
+    set isTeacherValid(value: boolean) {
+        this._isTeacherValid = value
     }
 
     public static empty(): LessonModel {
