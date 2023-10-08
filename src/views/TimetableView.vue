@@ -4,6 +4,7 @@ import useTimetableStore from "@/stores/timetable";
 import GroupModel from "@/ts/GroupModel";
 import Class from "@/components/Class.vue";
 import type { ClassMetaData } from "@/ts/types";
+import type ClassModel from "@/ts/ClassModel";
 
 const timetableStore = useTimetableStore();
 timetableStore.addGroup(GroupModel.withName("ПКС 3-21"))
@@ -51,7 +52,7 @@ function onChangeAudience(data: ClassMetaData, dayOfWeek: string, groupName: str
                 <template v-for="(clazz, id) in day.classes" :key="id">
                   <Class
                     :id="id"
-                    :clazz="clazz"
+                    :clazz="(clazz as ClassModel)"
                     @change-subject="data => onChangeSubject(data, day.dayOfWeek, group.name)"
                     @change-target="data => onChangeTarget(data, day.dayOfWeek, group.name)"
                     @change-teacher="data => onChangeTeacher(data, day.dayOfWeek, group.name)"

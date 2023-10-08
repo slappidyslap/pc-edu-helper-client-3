@@ -61,4 +61,4 @@ textarea:focus, input:focus{
 .not-valid-teacher-input {
   text-decoration: wavy underline hotpink;
 }
-</style>@/ts/TimetableSchema
+</style>

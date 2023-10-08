@@ -1,4 +1,5 @@
 import ClassModel from "./ClassModel"
+import type { Tuple } from "./types"
 
 export default class DayModel {
     private readonly _dayOfWeek: string
